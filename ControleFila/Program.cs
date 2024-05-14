@@ -11,11 +11,8 @@ namespace ControleFila
     {
         static void Main(string[] args)
         {
-            
-
-            Paciente p1 = new Paciente();
-            p1.cadastrar();
-            p1.visualizarDados();
+            Menu menu1 = new Menu();
+            menu1.menuI();
 
             Console.ReadKey();
         }

@@ -37,6 +37,7 @@ namespace ControleFila
             this.cpf = Console.ReadLine();
             Console.WriteLine("Digite [S] caso você seja um paciente preferencial, e [N] caso você não seja:  ".ToLower());
             this.verificador = Console.ReadLine();
+            Console.WriteLine("");
 
         }
         
