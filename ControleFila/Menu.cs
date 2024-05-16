@@ -36,7 +36,7 @@ namespace ControleFila
                             break;
 
                         case "3":
-                            //  fila1.addPacientePreferencial();
+                            fila1.addPacientePreferencial();
                             break;
 
                         case "4":

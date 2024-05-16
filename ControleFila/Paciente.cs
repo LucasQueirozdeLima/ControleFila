@@ -14,7 +14,7 @@ namespace ControleFila
         public int idade;
         public string telefone;
 
-        public string verificador; 
+        public int verificador; 
 
         private string cpf;
         public string CPF
@@ -35,8 +35,9 @@ namespace ControleFila
             this.telefone = Console.ReadLine();
             Console.WriteLine("Digite seu CPF: ");
             this.cpf = Console.ReadLine();
-            Console.WriteLine("Digite [S] caso você seja um paciente preferencial, e [N] caso você não seja:  ".ToLower());
-            this.verificador = Console.ReadLine();
+            Console.WriteLine("Digite [1] caso você seja um paciente preferencial, e [0] caso você não seja:  ".ToLower());
+            this.verificador = int.Parse(Console.ReadLine());
+
             Console.WriteLine("");
 
         }
@@ -47,7 +48,7 @@ namespace ControleFila
             Console.WriteLine("Idade: {0}", idade);
             Console.WriteLine("Telefone: {0}", telefone);
             Console.WriteLine("Cpf: {0}", cpf);
-            if (verificador == "s")
+            if (verificador == 1)
             {
                 Console.WriteLine("Preferencial: SIM");
             } else {
