@@ -40,11 +40,11 @@ namespace ControleFila
                             break;
 
                         case "4":
-                            // fila1.removerPaciente();
+                            fila1.removerPaciente();
                             break;
 
                         case "5":
-                            //  fila1.atualizarFila();
+                            //fila1.atualizarFila();
                             break;
 
                         case "Q":

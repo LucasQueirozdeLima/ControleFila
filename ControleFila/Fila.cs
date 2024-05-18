@@ -21,13 +21,13 @@ namespace ControleFila
         {
             {
                 //verificar toda fila-for
-                for (f = 0; f < pacientes.Length; f++)
+                for (this.f = 0; this.f < pacientes.Length; this.f++)
                 {
                     if (pacientes[f] == null)
                     {
                         pacientes[f] = new Paciente();
                         pacientes[f].cadastrar();
-                        
+                        fila++;
                         break;
 
                     }
@@ -39,10 +39,7 @@ namespace ControleFila
                 
             }
             this.organizarFila();
-            if (fila < 10)
-            {
-                fila++;
-            }
+       
         }
 
         public void addPacientePreferencial()
@@ -64,25 +61,33 @@ namespace ControleFila
         }
         public void removerPaciente()
         {
-            
+            for (int c = 1; c < fila; fila--)
+            {
+                    pacientes[0] = null;
+                    pacientes[fila - 1] = pacientes[fila];
+                break;
+            }
         }
-        
+
         public void organizarFila()
         {
-            for (int c = 0; c < this.f; this.f--)
-            {   
-                if (pacientes[this.f].verificador == 1) 
+            int org = f;
+            for(int c = 0; c <= this.f; this.f-- )
+            {
+                if (pacientes[f].verificador == 1 && pacientes[f-1].verificador != 1)
                 {
-                    pacientes[this.f - 1] = pacientes[this.f];
-                }
-                else 
-                {
-                
+                    pacientes[org] = pacientes[org - 1];
+                    pacientes[f - 1] = pacientes[f];
+                    //pacientes[fila] = null;
+                    
+                    org--;
                 }
             }
-            
-
         }
+
     }
 }
+
+
+
 
