@@ -13,27 +13,35 @@ namespace ControleFila
     {
         public int f;
         public int numrVerificador = 0;
-        public int fila = 0;
+        public int fila = -1;
         public Paciente[] pacientes = new Paciente[10];
 
 
         public void addPaciente()
         {
             {
-                //verificar toda fila-for
-                for (this.f = 0; this.f < pacientes.Length; this.f++)
+                if (pacientes[9] != null)
                 {
-                    if (pacientes[f] == null)
-                    {
-                        pacientes[f] = new Paciente();
-                        pacientes[f].cadastrar();
-                        fila++;
-                        break;
+                    Console.WriteLine("A fila esta cheia");
+                }
+                else
+                {
 
-                    }
-                    else
+                //verificar toda fila-for
+                    for (this.f = 0; this.f < pacientes.Length; this.f++)
                     {
-                        Console.WriteLine("A posição {0} já esta ocupada", f + 1);
+                        if (pacientes[f] == null)
+                        {
+                            pacientes[f] = new Paciente();
+                            pacientes[f].cadastrar();
+                            this.fila++;
+                            break;
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("A posição {0} já esta ocupada", f + 1);
+                        }
                     }
                 }
                 
@@ -49,6 +57,7 @@ namespace ControleFila
 
         public void verificarFila()
         {
+            
             Console.WriteLine("------Fila de espera------"); 
             
             for (int i = 0; i < pacientes.Length; i++)
@@ -61,12 +70,20 @@ namespace ControleFila
         }
         public void removerPaciente()
         {
-            for (int c = 1; c < fila; fila--)
+            int c = 0;
+            pacientes[0] = null;
+            if (pacientes[0] == null)
             {
-                    pacientes[0] = null;
-                    pacientes[fila - 1] = pacientes[fila];
-                break;
+                for( c = 0; c <= this.fila; this.fila--)
+                {
+                    pacientes[c] = pacientes[c+1];
+                    c++;
+                    pacientes[c] = pacientes[c+1];
+                }
+                pacientes[c + fila] = null;
+                c =0;  
             }
+            
         }
 
         public void organizarFila()
