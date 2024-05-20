@@ -18,9 +18,8 @@ namespace ControleFila
                 Console.WriteLine("-------MENU-------");
                 Console.WriteLine("1. Verificar fila " +
                     "\n2. Adicionar paciente " +
-                    "\n3. Adicionar paciente preferencial " +
-                    "\n4. Remover paciente " +
-                    "\n5. Atualizar fila " +
+                    "\n3. Remover paciente " +
+                    "\n4. Limpar console " +
                     "\nQ. Sair\n".ToUpper());
                 marcador=Console.ReadLine();
                 Console.WriteLine("");
@@ -36,18 +35,15 @@ namespace ControleFila
                             break;
 
                         case "3":
-                            fila1.addPacientePreferencial();
-                            break;
-
-                        case "4":
                             fila1.removerPaciente();
                             break;
 
-                        case "5":
-                            //fila1.atualizarFila();
+                        case "4":
+                            System.Threading.Thread.Sleep(2000);
+                            Console.Clear();
                             break;
 
-                        case "Q":
+                    case "Q":
                             Console.WriteLine("Encerrando programa...");
                             break;
 

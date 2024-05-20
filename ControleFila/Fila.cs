@@ -11,7 +11,7 @@ namespace ControleFila
 {
     public class Fila
     {
-        public int f;
+        public int f = 0;
         public int numrVerificador = 0;
         public int fila = -1;
         public Paciente[] pacientes = new Paciente[10];
@@ -22,51 +22,46 @@ namespace ControleFila
             {
                 if (pacientes[9] != null)
                 {
-                    Console.WriteLine("A fila esta cheia");
+                    Console.WriteLine("A fila esta cheia\n");
                 }
                 else
                 {
 
                 //verificar toda fila-for
-                    for (this.f = 0; this.f < pacientes.Length; this.f++)
+                    for (; this.f < pacientes.Length; this.f++)
                     {
                         if (pacientes[f] == null)
                         {
                             pacientes[f] = new Paciente();
                             pacientes[f].cadastrar();
                             this.fila++;
+                            this.organizarFila();
                             break;
 
                         }
                         else
                         {
-                            Console.WriteLine("A posição {0} já esta ocupada", f + 1);
+                            Console.WriteLine("A posição {0} já esta ocupada\n", f + 1);
                         }
                     }
                 }
                 
             }
-            this.organizarFila();
-       
-        }
-
-        public void addPacientePreferencial()
-        {
-            
         }
 
         public void verificarFila()
         {
             
-            Console.WriteLine("------Fila de espera------"); 
+            Console.WriteLine("------Fila de espera------\n"); 
             
             for (int i = 0; i < pacientes.Length; i++)
             {
                 if (pacientes[i] != null)
                 {
-                    Console.WriteLine("Paciente número {0}: {1}\n", i + 1, pacientes[i].nome);
+                    Console.WriteLine("Paciente número {0}: {1}", i + 1, pacientes[i].nome);
                 }
             }
+            Console.WriteLine("");
         }
         public void removerPaciente()
         {
@@ -74,30 +69,32 @@ namespace ControleFila
             pacientes[0] = null;
             if (pacientes[0] == null)
             {
-                for( c = 0; c <= this.fila; this.fila--)
+                pacientes[c] = pacientes[c + 1];
+                for ( c = 0; c <= this.fila + 5; this.fila--)
                 {
-                    pacientes[c] = pacientes[c+1];
                     c++;
                     pacientes[c] = pacientes[c+1];
+                    
                 }
                 pacientes[c + fila] = null;
-                c =0;  
+                c =0;
+                f--;
+                this.fila = f;
+                
             }
             
         }
 
         public void organizarFila()
         {
-            int org = f;
-            for(int c = 0; c <= this.f; this.f-- )
+            Paciente pacienteTemp = new Paciente();
+            for(int c = 0; c < f; c++ )
             {
-                if (pacientes[f].verificador == 1 && pacientes[f-1].verificador != 1)
+                if (pacientes[f-c].verificador == 1 && pacientes[f-1-c].verificador != 1)
                 {
-                    pacientes[org] = pacientes[org - 1];
-                    pacientes[f - 1] = pacientes[f];
-                    //pacientes[fila] = null;
-                    
-                    org--;
+                    pacienteTemp = pacientes[f - c];
+                    pacientes[f - c] = pacientes[f - 1 - c];
+                    pacientes[f - 1 - c] = pacienteTemp;
                 }
             }
         }
